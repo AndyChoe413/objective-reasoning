@@ -7,19 +7,19 @@ const getEmail = obj => `${obj.firstName.toLowerCase()}.${obj.lastName.toLowerCa
 
 const getPlaylistLength = obj => obj.songs.length
 
-const getHardestHomework = objects => {
-    if (objects.averageScore === undefined) return '';
-    
-    let lowestScore = objects[0].averageScore;
-    
-    let hwName = '';
-    for (let i = 0; i < objects.length; i++) {
-        if (objects[i].averageScore < lowestScore) {
-            lowestScore = objects[i].averageScore;
-            hwName = objects[i].name
+
+const getHardestHomework = homeworks => {
+    let lowestScore = Infinity;
+    let name = '';
+
+    for (const item of homeworks) {
+        if (item.averageScore < lowestScore) {
+            lowestScore = item.averageScore;
+            name = item.name;
         }
     }
-    return hwName;
+    return name
+
 }
 
 const createPhonebook = (keys, values) => {   
